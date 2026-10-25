@@ -1,0 +1,9 @@
+body {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    gap: 20px;
+    background-color: rgb(73, 89, 103);
+}
