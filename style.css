@@ -1,9 +1,74 @@
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    background-color: var(--mainBgColor);
     margin: 0;
 }
 
 header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondaryBgColor);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    padding: 3px 8px 4px 8px;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: rgba(240, 248, 255, 0.35);
+}
+
+#searchInput {
+    width: 150px;
+    height: 28px;
+    color: black;
+    border: none;
+    border-radius: 6px;
+    padding: 1px 8px;
+}
+
+#pokemonList {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contentWrapper {
+    max-width: 1440px;
+    padding: 16px max(calc(50% - 720px), 64px);
+}
+
+.logoImg {
+    width: 50px;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7425%) hue-rotate(42deg) brightness(118%) contrast(118%);
+}
+
+.logoBox {
+    display: flex;
     gap: 20px;
-    background-color: rgb(73, 89, 103);
+}
+
+.pokemonCardSmall {
+    width: 300px;
+    height: 200px;
 }

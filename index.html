@@ -11,12 +11,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <img src="./assets/icons/logo.svg" alt="Pokedex-Logo">
-        <h1>Pokédex</h1>
+    <header class="contentWrapper">
+        <div class="logoBox">
+            <img src="./assets/icons/logo.svg" class="logoImg" alt="Pokedex-Logo">
+            <h1>Pokédex</h1>
+        </div>
+        <input type="text" id="searchInput" placeholder="Search" data-id="search-input">
     </header>
-    <main>
-        
+
+    <main class="contentWrapper" data-id="content">
+        <ul id="pokemonList">
+            <li>
+                <button class="pokemonCardSmall" data-id="card">
+                    <h2>Bulbasaur</h2>
+                    <p>Grass</p>
+                    <p>Poison</p>
+                    <p>#001</p>
+                </button>
+            </li>
+        </ul>
+        <button id="loadMoreBtn" class="basicBtn" data-id="load-more-button">Load more</button>
     </main>
 </body>
 </html>
