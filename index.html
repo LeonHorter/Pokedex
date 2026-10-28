@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./styles/font.css">
     <link rel="stylesheet" href="./styles/variables.css">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header class="contentWrapper">
@@ -22,7 +23,7 @@
     <main class="contentWrapper" data-id="content">
         <ul id="pokemonList">
             <li>
-                <button class="pokemonCardSmall" data-id="card">
+                <button class="pokemonCard" data-id="card" onclick="openDialog(this)">
                     <h2>Bulbasaur</h2>
                     <p>Grass</p>
                     <p>Poison</p>
@@ -32,5 +33,61 @@
         </ul>
         <button id="loadMoreBtn" class="basicBtn" data-id="load-more-button">Load more</button>
     </main>
+
+    <dialog id="pokemonOverlay" onclick="closeDialog()">
+        <div onclick="stopPropagation(event)">
+            <header>
+                <h2>Bulbasaur</h2>
+                <p>Grass</p>
+                <p>Poison</p>
+                <p>#001</p>
+            </header>
+            <section>
+                <ul>
+                    <li>About</li>
+                    <li>Base Stats</li>
+                    <li>Evolution</li>
+                    <li>Moves</li>
+                </ul>
+                <table>
+                    <tr>
+                        <th>Species</th>
+                        <td>Seed</td>
+                    </tr>
+                    <tr>
+                        <th>Height</th>
+                        <td>2'3.6"</td>
+                    </tr>
+                    <tr>
+                        <th>Weight</th>
+                        <td>15.2 lbs</td>
+                    </tr>
+                    <tr>
+                        <th>Abilities</th>
+                        <td>Overgrow, Chlorophyl</td>
+                    </tr>
+                </table>
+                <h3>Breeding</h3>
+                <table>
+                    <tr>
+                        <th>Gender</th>
+                        <td>87,5 %</td>
+                    </tr>
+                    <tr>
+                        <th>Egg Groups</th>
+                        <td>Monster</td>
+                    </tr>
+                    <tr>
+                        <th>Egg Cycle</th>
+                        <td>Grass</td>
+                    </tr>
+                </table>
+            </section>
+            <footer>
+                <input type="image" aria-label="previous Pokémon" class="" src="" tabindex="0" onclick="showPrevImage()">
+                <input type="image" aria-label="next Pokémon" class="" src="" tabindex="0" onclick="showNextImage()">
+            </footer>
+        </div>
+    </dialog>
 </body>
 </html>
