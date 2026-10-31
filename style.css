@@ -55,6 +55,12 @@ button:hover {
 #pokemonList {
     list-style-type: none;
     padding: 0;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
 }
 
 .contentWrapper {

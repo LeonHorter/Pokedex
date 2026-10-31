@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="./styles/variables.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <script src="./scripts/templates.js"></script>
 </head>
-<body>
+<body onload="renderCards()">
     <header class="contentWrapper">
         <div class="logoBox">
             <img src="./assets/icons/logo.svg" class="logoImg" alt="Pokedex-Logo">
@@ -22,14 +23,6 @@
 
     <main class="contentWrapper" data-id="content">
         <ul id="pokemonList">
-            <li>
-                <button class="pokemonCard" data-id="card" onclick="openDialog(this)">
-                    <h2>Bulbasaur</h2>
-                    <p>Grass</p>
-                    <p>Poison</p>
-                    <p>#001</p>
-                </button>
-            </li>
         </ul>
         <button id="loadMoreBtn" class="basicBtn" data-id="load-more-button">Load more</button>
     </main>
