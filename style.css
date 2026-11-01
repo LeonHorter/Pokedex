@@ -76,6 +76,7 @@ button:hover {
 .logoBox {
     display: flex;
     gap: 20px;
+    text-decoration: none;
 }
 
 .pokemonCard {

@@ -1,10 +1,14 @@
-function getCardTemplate(index) {
+function getCardTemplate(pokemonObj) {
     return `<li>
                 <button class="pokemonCard" data-id="card" onclick="openDialog(this)">
-                    <h2>${pokemonData[index].name}</h2>
-                    <p>Type1</p>
-                    <p>Type2</p>
-                    <p>#${pokemonData[index].id}</p>
+                    <h2>${pokemonObj.name}</h2>
+                    <div id="pokemonTypes_${pokemonObj.id}">
+                    </div>
+                    <p>#${pokemonObj.id}</p>
                 </button>
             </li>`;
+}
+
+function getTypesTemplate(pokemonTypeObj) {
+    return `<p>${pokemonTypeObj.name}</p>`;
 }

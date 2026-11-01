@@ -1,25 +1,30 @@
 const dialogRef = document.getElementById('pokemonOverlay');
 const baseUrl = 'https://pokeapi.co/api/v2/';
 
-let pokemonList = [];
 let pokemonData = [];
 
 async function renderCards() {
-    let pokemonObj = await loadData(baseUrl + 'pokemon?limit=30&offset=0');
     let contentRef = document.getElementById('pokemonList');
     
-    pokemonList = pokemonObj.results;
-    
-    for (let index = 0; index < pokemonList.length; index++) {
-        pokemonData.push(await loadData(pokemonList[index].url));
-        contentRef.innerHTML += getCardTemplate(index);
+    for (let pokemonId = 1; pokemonId <= 30; pokemonId++) {
+        pokemonData.push(await loadData('pokemon/' + pokemonId));
+        contentRef.innerHTML += getCardTemplate(pokemonData[pokemonId - 1]);
+        renderPokemonTypes(pokemonData[pokemonId - 1]);
     }
 
     console.log(pokemonData);
 }
 
-async function loadData(path) {
-    let response = await fetch(path);
+function renderPokemonTypes(pokemon) {
+    let contentRef = document.getElementById('pokemonTypes_' + pokemon.id);
+
+    for (let index = 0; index < pokemon.types.length; index++) {
+        contentRef.innerHTML += getTypesTemplate(pokemon.types[index].type);
+    }
+}
+
+async function loadData(path = '') {
+    let response = await fetch(baseUrl + path);
     return responseToJson = await response.json();
 }
 
