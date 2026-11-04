@@ -1,6 +1,6 @@
 function getCardTemplate(pokemonObj) {
     return `<li>
-                <button class="pokemonCard" data-id="card" onclick="openDialog(this)">
+                <button class="pokemonCard bg_${pokemonObj.types[0].type.name}" data-id="card" onclick="openDialog(this)">
                     <header class="pokemonCardContent">
                         <h2>${pokemonObj.name}</h2>
                         <p>#${pokemonObj.id}</p>
