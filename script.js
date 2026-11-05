@@ -3,8 +3,10 @@ const baseUrl = 'https://pokeapi.co/api/v2/';
 
 let pokemonData = [];
 
-async function loadCards() {
-    for (let pokemonId = 1; pokemonId <= 30; pokemonId++) {
+async function loadCards(count) {
+    let startIndex = pokemonData.length;
+
+    for (let pokemonId = startIndex + 1; pokemonId < startIndex + 1 + count; pokemonId++) {
         pokemonData.push(await loadData('pokemon/' + pokemonId));
         renderCards(pokemonData[pokemonId - 1]);
     }
