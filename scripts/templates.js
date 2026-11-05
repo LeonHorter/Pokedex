@@ -3,7 +3,7 @@ function getCardTemplate(pokemonObj) {
                 <button class="pokemonCard bg_${pokemonObj.types[0].type.name}" data-id="card" onclick="openDialog(this)">
                     <header class="pokemonCardContent">
                         <h2>${capitalizeFirstLetter(pokemonObj.name)}</h2>
-                        <p>#${pokemonObj.id}</p>
+                        <p>#${String(pokemonObj.id).padStart(4, '0')}</p>
                     </header>
                     <div class="pokemonCardContent">
                         <div id="pokemonTypes_${pokemonObj.id}" class="pokemonCardTypes">
