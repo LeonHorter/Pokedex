@@ -2,7 +2,7 @@ function getCardTemplate(pokemonObj) {
     return `<li>
                 <button class="pokemonCard bg_${pokemonObj.types[0].type.name}" data-id="card" onclick="openDialog(this)">
                     <header class="pokemonCardContent">
-                        <h2>${pokemonObj.name}</h2>
+                        <h2>${capitalizeFirstLetter(pokemonObj.name)}</h2>
                         <p>#${pokemonObj.id}</p>
                     </header>
                     <div class="pokemonCardContent">
@@ -15,5 +15,5 @@ function getCardTemplate(pokemonObj) {
 }
 
 function getTypesTemplate(pokemonTypeObj) {
-    return `<p>${pokemonTypeObj.name}</p>`;
+    return `<p>${capitalizeFirstLetter(pokemonTypeObj.name)}</p>`;
 }

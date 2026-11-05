@@ -3,16 +3,20 @@ const baseUrl = 'https://pokeapi.co/api/v2/';
 
 let pokemonData = [];
 
-async function renderCards() {
-    let contentRef = document.getElementById('pokemonList');
-    
+async function loadCards() {
     for (let pokemonId = 1; pokemonId <= 30; pokemonId++) {
         pokemonData.push(await loadData('pokemon/' + pokemonId));
-        contentRef.innerHTML += getCardTemplate(pokemonData[pokemonId - 1]);
-        renderPokemonTypes(pokemonData[pokemonId - 1]);
+        renderCards(pokemonData[pokemonId - 1]);
     }
 
     console.log(pokemonData);
+}
+
+function renderCards(pokemonObj) {
+    let contentRef = document.getElementById('pokemonList');
+
+    contentRef.innerHTML += getCardTemplate(pokemonObj);
+    renderPokemonTypes(pokemonObj);
 }
 
 function renderPokemonTypes(pokemon) {
@@ -26,6 +30,10 @@ function renderPokemonTypes(pokemon) {
 async function loadData(path = '') {
     let response = await fetch(baseUrl + path);
     return responseToJson = await response.json();
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function openDialog(element) {
