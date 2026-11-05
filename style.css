@@ -4,6 +4,7 @@ body {
     min-height: 100dvh;
     background-color: var(--mainBgColor);
     margin: 0;
+    padding-bottom: 40px;
 }
 
 body:has(dialog[open]) {
@@ -68,6 +69,9 @@ p {
 }
 
 .mainHeader {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
