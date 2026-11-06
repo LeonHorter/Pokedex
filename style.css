@@ -85,7 +85,6 @@ p {
 
 .logoImg {
     width: 50px;
-    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7425%) hue-rotate(42deg) brightness(118%) contrast(118%);
 }
 
 .logoBox {
@@ -120,10 +119,21 @@ p {
     padding: 3px 8px 4px 8px;
 }
 
+.pokemonCardImgBox {
+    background-image: url(./assets/icons/logo_bg.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
 .pokemonImgSmall {
-    width: 130px;
-    height: 130px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
+    padding-right: 30px;
 }
 
 .basicBtn:hover {

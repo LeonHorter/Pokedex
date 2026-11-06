@@ -8,7 +8,9 @@ function getCardTemplate(pokemonObj) {
                     <div class="pokemonCardContent">
                         <div id="pokemonTypes_${pokemonObj.id}" class="pokemonCardTypes">
                         </div>
-                        <img src="${pokemonObj.sprites.other['official-artwork'].front_default}" class="pokemonImgSmall" alt="Pokémon-Bild" loading="lazy">
+                        <div class="pokemonCardImgBox">
+                            <img src="${pokemonObj.sprites.other['official-artwork'].front_default}" class="pokemonImgSmall" alt="Pokémon-Bild" loading="lazy">
+                        </div>
                     </div>
                 </button>
             </li>`;
