@@ -169,6 +169,32 @@ dialog::backdrop {
     align-items: center;
 }
 
+.pokemonOverlayTypes {
+    display: flex;
+    gap: 6px;
+    margin-top: 16px;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.pokemonOverlayImgBox {
+    height: 170px;
+    background-image: url(./assets/icons/logo_bg.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right; 
+    display: flex;
+    justify-content: center;
+}
+
+.pokemonImgLarge {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    position: absolute;
+    top: 170px;
+}
+
 .pokemonOverlayMain {
     padding: 20px;
     background-color: var(--secondaryBgColor);
@@ -201,32 +227,8 @@ dialog::backdrop {
 .pokemonOverlayFooter {
     padding: 20px;
     background-color: var(--secondaryBgColor);
-}
-
-.pokemonOverlayTypes {
     display: flex;
-    gap: 6px;
-    margin-top: 16px;
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.pokemonOverlayImgBox {
-    height: 170px;
-    background-image: url(./assets/icons/logo_bg.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: right bottom; 
-    display: flex;
-    justify-content: center;
-}
-
-.pokemonImgLarge {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    position: absolute;
-    top: 170px;
+    justify-content: space-between;
 }
 
 .basicBtn {
@@ -244,6 +246,7 @@ dialog::backdrop {
     height: 28px;
     padding: 4px;
     border-radius: 50%;
+    background-color: var(--btnBgColor);
 }
 
 .iconBtn:hover {

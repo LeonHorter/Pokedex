@@ -34,6 +34,16 @@ async function loadData(path = '') {
     return responseToJson = await response.json();
 }
 
+function showNextPokemon(pokemonId) {
+    let indexNextPokemon = pokemonId;
+    renderDialog(pokemonData[indexNextPokemon]);
+}
+
+function showPrevPokemon(pokemonId) {
+    let indexPrevPokemon = pokemonId - 2;
+    renderDialog(pokemonData[indexPrevPokemon]);
+}
+
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -41,9 +51,13 @@ function capitalizeFirstLetter(string) {
 function openDialog(pokemonCard) {
     let pokemonObj = pokemonData[pokemonCard.id - 1];
 
+    renderDialog(pokemonObj);
+    dialogRef.showModal();
+}
+
+function renderDialog(pokemonObj) {
     dialogRef.innerHTML = getPokemonOverlayTemplate(pokemonObj);
     renderPokemonTypes('pokemonOverlayTypes_', pokemonObj);
-    dialogRef.showModal();
 }
 
 function closeDialog() {
