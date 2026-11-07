@@ -18,14 +18,14 @@ function renderCards(pokemonObj) {
     let contentRef = document.getElementById('pokemonList');
 
     contentRef.innerHTML += getCardTemplate(pokemonObj);
-    renderPokemonTypes(pokemonObj);
+    renderPokemonTypes('pokemonCardTypes_', pokemonObj);
 }
 
-function renderPokemonTypes(pokemon) {
-    let contentRef = document.getElementById('pokemonTypes_' + pokemon.id);
+function renderPokemonTypes(contentElement, pokemonObj) {
+    let contentRef = document.getElementById(contentElement + pokemonObj.id);
 
-    for (let index = 0; index < pokemon.types.length; index++) {
-        contentRef.innerHTML += getTypesTemplate(pokemon.types[index].type);
+    for (let index = 0; index < pokemonObj.types.length; index++) {
+        contentRef.innerHTML += getTypesTemplate(pokemonObj.types[index].type);
     }
 }
 
@@ -38,7 +38,11 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function openDialog(element) {
+function openDialog(pokemonCard) {
+    let pokemonObj = pokemonData[pokemonCard.id - 1];
+
+    dialogRef.innerHTML = getPokemonOverlayTemplate(pokemonObj);
+    renderPokemonTypes('pokemonOverlayTypes_', pokemonObj);
     dialogRef.showModal();
 }
 

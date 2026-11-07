@@ -11,33 +11,27 @@ body:has(dialog[open]) {
     overflow: hidden;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-}
-
 h1 {
     font-size: 36px;
     margin: 0;
 }
 
 h2 {
+    font-size: 30px;
+    margin: 0;
+}
+
+h3 {
     font-size: 22px;
     margin: 0;
-    margin-top: 16px;
 }
 
 button {
     cursor: pointer;
     border: none;
-    border-radius: 6px;
-    padding: 3px 8px 4px 8px;
-    background-color: rgba(255, 255, 255, 0.2);
     font-size: 14px;
     transition: 0.2s ease-in-out;
+    background: none;
 }
 
 button:hover {
@@ -68,6 +62,12 @@ p {
     flex-wrap: wrap;
 }
 
+#pokemonOverlay {
+    padding: 0;
+    border: none;
+    border-radius: 12px;
+}
+
 .mainHeader {
     position: sticky;
     top: 0;
@@ -76,6 +76,14 @@ p {
     justify-content: space-between;
     align-items: center;
     background-color: var(--secondaryBgColor);
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
 }
 
 .contentWrapper {
@@ -105,17 +113,23 @@ p {
     justify-content: space-between;
 }
 
+.pokemonCardContent > h2 {
+    margin-top: 16px;
+}
+
 .pokemonCardTypes {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
     margin-top: 16px;
+    list-style-type: none;
+    padding-left: 0;
 }
 
-.pokemonCardTypes > p {
-    background-color: rgba(240, 248, 255, 0.2);
-    border-radius: 12px;
+.pokemonType {
+    background-color: var(--btnBgColor);
+    border-radius: 24px;
     padding: 3px 8px 4px 8px;
 }
 
@@ -125,7 +139,6 @@ p {
     background-repeat: no-repeat;
     background-position: right;
     display: flex;
-    flex: 1;
     justify-content: flex-end;
 }
 
@@ -136,6 +149,101 @@ p {
     padding-right: 30px;
 }
 
+.pokemonOverlayContent > * {
+    padding: 20px;
+}
+
+.pokemonOverlayClose {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+}
+
+.pokemonOverlayTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pokemonOverlayMain {
+    background-color: var(--secondaryBgColor);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.pokemonOverlayMain * {
+    color: var(--mainFontColor);
+}
+
+.pokemonOverlayNav {
+    display: flex;
+    gap: 8px;
+    list-style-type: none;
+    padding-left: 0;
+    background-color: var(--btnBgColor);
+    border-radius: 24px;
+}
+
+.pokemonOverlayNav button {
+    border-radius: 24px;
+    padding: 7px 12px 8px 12px;
+}
+
+.pokemonOverlayNav button:hover {
+    background-color: var(--hoverColor);
+}
+
+.pokemonOverlayFooter {
+    background-color: var(--secondaryBgColor);
+}
+
+.pokemonOverlayTypes {
+    display: flex;
+    gap: 6px;
+    margin-top: 16px;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.pokemonOverlayImgBox {
+    height: 170px;
+    background-image: url(./assets/icons/logo_bg.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    display: flex;
+    justify-content: center;
+}
+
+.pokemonImgLarge {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    position: absolute;
+    top: 190px;
+}
+
+.basicBtn {
+    border-radius: 6px;
+    padding: 3px 8px 4px 8px;
+    background-color: var(--btnBgColor);
+}
+
 .basicBtn:hover {
-    background-color: rgba(240, 248, 255, 0.35);
+    background-color: var(--hoverColor);
+}
+
+.iconBtn {
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+    border-radius: 50%;
+}
+
+.iconBtn:hover {
+    background-color: var(--hoverColor);
+}
+
+.arrowBtnLeft {
+    rotate: 180deg;
 }

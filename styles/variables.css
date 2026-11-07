@@ -2,4 +2,6 @@
     --mainBgColor: rgb(73, 89, 103);
     --secondaryBgColor: rgb(50, 60, 68);
     --mainFontColor: white;
+    --btnBgColor: rgba(255, 255, 255, 0.2);
+    --hoverColor: rgba(240, 248, 255, 0.35);
 }
