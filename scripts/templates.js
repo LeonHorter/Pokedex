@@ -22,7 +22,7 @@ function getTypesTemplate(pokemonTypeObj) {
 
 function getPokemonOverlayTemplate(pokemonObj) {
     return `<div class="pokemonOverlayContent bg_${pokemonObj.types[0].type.name}" onclick="stopPropagation(event)">
-                <header>
+                <header class="pokemonOverlayHeader">
                     <div class="pokemonOverlayClose">
                         <input type="image" aria-label="close overlay" class="iconBtn" src="./assets/icons/close.svg" alt="close Overlay" tabindex="0" onclick="closeDialog()">
                     </div>
