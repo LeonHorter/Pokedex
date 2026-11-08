@@ -39,8 +39,8 @@ function getPokemonOverlayTemplate(pokemonObj) {
                 <main class="pokemonOverlayMain">
                     <nav>
                         <ul class="pokemonOverlayNav">
-                            <li><button>Base Stats</button><li>
-                            <li><button>About</button></li>
+                            <li><button>About</button><li>
+                            <li><button>Base Stats</button></li>
                             <li><button>Evolution</button></li>
                             <li><button>Moves</button></li>
                         </ul>
