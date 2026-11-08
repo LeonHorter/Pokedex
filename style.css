@@ -204,6 +204,12 @@ dialog::backdrop {
 
 .pokemonOverlayMain * {
     color: var(--mainFontColor);
+    font-size: 14px;
+}
+
+.pokemonOverlayMain th {
+    width: 70px;
+    text-align: left;
 }
 
 .pokemonOverlayNav {
@@ -222,6 +228,10 @@ dialog::backdrop {
 
 .pokemonOverlayNav button:hover {
     background-color: var(--hoverColor);
+}
+
+.pokemonOverlayMainContent {
+    padding: 0px 12px 0px 12px;
 }
 
 .pokemonOverlayFooter {
@@ -251,6 +261,10 @@ dialog::backdrop {
 
 .iconBtn:hover {
     background-color: var(--hoverColor);
+}
+
+.iconBtn:active {
+    background-color: var(--activeColor);
 }
 
 .arrowBtnLeft {

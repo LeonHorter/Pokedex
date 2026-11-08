@@ -45,39 +45,26 @@ function getPokemonOverlayTemplate(pokemonObj) {
                             <li><button>Moves</button></li>
                         </ul>
                     </nav>
-                    <table>
-                        <tr>
-                            <th>Species</th>
-                            <td>Seed</td>
-                        </tr>
-                        <tr>
-                            <th>Height</th>
-                            <td>2'3.6"</td>
-                        </tr>
-                        <tr>
-                            <th>Weight</th>
-                            <td>15.2 lbs</td>
-                        </tr>
-                        <tr>
-                            <th>Abilities</th>
-                            <td>Overgrow, Chlorophyl</td>
-                        </tr>
-                    </table>
-                    <h3>Breeding</h3>
-                    <table>
-                        <tr>
-                            <th>Gender</th>
-                            <td>87,5 %</td>
-                        </tr>
-                        <tr>
-                            <th>Egg Groups</th>
-                            <td>Monster</td>
-                        </tr>
-                        <tr>
-                            <th>Egg Cycle</th>
-                            <td>Grass</td>
-                        </tr>
-                    </table>
+                    <div class="pokemonOverlayMainContent">
+                        <table>
+                            <tr>
+                                <th>Species</th>
+                                <td>${capitalizeFirstLetter(pokemonObj.species.name)}</td>
+                            </tr>
+                            <tr>
+                                <th>Height</th>
+                                <td>${decimeterToCentimeter(pokemonObj.height)}</td>
+                            </tr>
+                            <tr>
+                                <th>Weight</th>
+                                <td>${hectogramToKilogram(pokemonObj.weight)}</td>
+                            </tr>
+                            <tr>
+                                <th>Abilities</th>
+                                <td>${renderPokemonAbilities(pokemonObj.abilities)}</td>
+                            </tr>
+                        </table>
+                    </div>
                 </main>
                 <footer class="pokemonOverlayFooter">
                     <input type="image" aria-label="previous Pokémon" class="iconBtn arrowBtnLeft" src="./assets/icons/arrow-right.svg" alt="previous Pokémon" tabindex="0" onclick="showPrevPokemon(${pokemonObj.id})">

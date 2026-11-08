@@ -4,4 +4,5 @@
     --mainFontColor: white;
     --btnBgColor: rgba(255, 255, 255, 0.2);
     --hoverColor: rgba(240, 248, 255, 0.35);
+    --activeColor: rgba(240, 248, 255, 0.1);
 }

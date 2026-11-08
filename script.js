@@ -29,6 +29,17 @@ function renderPokemonTypes(contentElement, pokemonObj) {
     }
 }
 
+function renderPokemonAbilities(pokemonAbilitiesObj) {
+    let abilities = [];
+
+    for (let index = 0; index < pokemonAbilitiesObj.length; index++) {
+        let ability = capitalizeFirstLetter(pokemonAbilitiesObj[index].ability.name);
+        abilities.push(ability);
+    }
+
+    return abilities.join(', ');
+}
+
 async function loadData(path = '') {
     let response = await fetch(baseUrl + path);
     return responseToJson = await response.json();
@@ -46,6 +57,14 @@ function showPrevPokemon(pokemonId) {
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function decimeterToCentimeter(dm) {
+    return dm * 10 + ' cm';
+}
+
+function hectogramToKilogram(hg) {
+    return hg / 10 + ' kg';
 }
 
 function openDialog(pokemonCard) {
