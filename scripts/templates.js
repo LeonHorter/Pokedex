@@ -67,8 +67,12 @@ function getPokemonOverlayTemplate(pokemonObj) {
                     </div>
                 </main>
                 <footer class="pokemonOverlayFooter">
-                    <input type="image" aria-label="previous Pokémon" class="iconBtn arrowBtnLeft" src="./assets/icons/arrow-right.svg" alt="previous Pokémon" tabindex="0" onclick="showPrevPokemon(${pokemonObj.id})">
-                    <input type="image" aria-label="next Pokémon" class="iconBtn" src="./assets/icons/arrow-right.svg" alt="next Pokémon" tabindex="0" onclick="showNextPokemon(${pokemonObj.id})">
+                    <div>
+                        <input type="image" id="prevPokemonBtn" aria-label="previous Pokémon" class="iconBtn arrowBtnLeft" src="./assets/icons/arrow-right.svg" alt="previous Pokémon" tabindex="0" onclick="showPrevPokemon(${pokemonObj.id})">
+                    </div>
+                    <div>
+                        <input type="image" id="nextPokemonBtn" aria-label="next Pokémon" class="iconBtn" src="./assets/icons/arrow-right.svg" alt="next Pokémon" tabindex="0" onclick="showNextPokemon(${pokemonObj.id})">
+                    </div>
                 </footer>
             </div>`;
 }

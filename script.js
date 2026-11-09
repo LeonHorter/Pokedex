@@ -2,13 +2,20 @@ const dialogRef = document.getElementById('pokemonOverlay');
 const baseUrl = 'https://pokeapi.co/api/v2/';
 
 let pokemonData = [];
+let pokemonCount = '';  // kann weg
+// neues Array [pokemonLinks] mit allen Pokemon-Links
+
+async function getPokemonCount() {
+    let response = loadData('pokemon');
+    pokemonCount = response.count;
+}
 
 async function loadCards(count) {
-    let startIndex = pokemonData.length;
+    let startIndex = pokemonData.length + 1;    // startIndex = .length
 
-    for (let pokemonId = startIndex + 1; pokemonId < startIndex + 1 + count; pokemonId++) {
-        pokemonData.push(await loadData('pokemon/' + pokemonId));
-        renderCards(pokemonData[pokemonId - 1]);
+    for (let pokemonId = startIndex; pokemonId < startIndex + count; pokemonId++) { // Schleife über pokemonLinks[index] von index = startIndex bis < startIndex + count
+        pokemonData.push(await loadData('pokemon/' + pokemonId));   // loadData(pokemonLinks[index].url)
+        renderCards(pokemonData[pokemonId - 1]);    // renderCards(pokemonData[pokemonData[index])
     }
 
     console.log(pokemonData);
@@ -45,14 +52,14 @@ async function loadData(path = '') {
     return responseToJson = await response.json();
 }
 
-function showNextPokemon(pokemonId) {
-    let indexNextPokemon = pokemonId;
-    renderDialog(pokemonData[indexNextPokemon]);
+function showNextPokemon(pokemonId) {   // pokemonObj übergeben
+    let indexNextPokemon = pokemonId;   // pokemonObj.name suchen in pokemonData; nächstes pokemonObj auslesen
+    renderDialog(pokemonData[indexNextPokemon]);    // nächstes pokemonObj übergeben renderDialog(nextPokemonObj)
 }
 
-function showPrevPokemon(pokemonId) {
-    let indexPrevPokemon = pokemonId - 2;
-    renderDialog(pokemonData[indexPrevPokemon]);
+function showPrevPokemon(pokemonId) {   // pokemonObj übergeben
+    let indexPrevPokemon = pokemonId - 2;   // pokemonObj.name suchen in pokemonData; vorheriges pokemonObj auslesen
+    renderDialog(pokemonData[indexPrevPokemon]);    // vorheriges pokemonObj übergeben renderDialog(prevPokemonObj)
 }
 
 function capitalizeFirstLetter(string) {
@@ -77,6 +84,27 @@ function openDialog(pokemonCard) {
 function renderDialog(pokemonObj) {
     dialogRef.innerHTML = getPokemonOverlayTemplate(pokemonObj);
     renderPokemonTypes('pokemonOverlayTypes_', pokemonObj);
+    renderFirstLastDialog(pokemonObj);
+}
+
+function renderFirstLastDialog(pokemonObj) {
+    let prevBtnContentRef = document.getElementById('prevPokemonBtn');
+    let nextBtnContentRef = document.getElementById('nextPokemonBtn');
+
+    switch (pokemonObj.id) {
+        case 1:
+            prevBtnContentRef.classList.add('dNone');
+            nextBtnContentRef.classList.remove('dNone');
+            break;
+        case pokemonCount:
+            prevBtnContentRef.classList.remove('dNone');
+            nextBtnContentRef.classList.add('dNone');
+            break;
+        default:
+            prevBtnContentRef.classList.remove('dNone');
+            nextBtnContentRef.classList.remove('dNone');
+            break;
+    }
 }
 
 function closeDialog() {

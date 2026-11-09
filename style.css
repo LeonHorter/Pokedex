@@ -153,6 +153,10 @@ dialog::backdrop {
     padding-right: 30px;
 }
 
+.pokemonOverlayContent {
+    padding: 12px;
+}
+
 .pokemonOverlayHeader {
     padding: 20px 20px 0px 20px;
 }
@@ -192,7 +196,7 @@ dialog::backdrop {
     height: 200px;
     object-fit: cover;
     position: absolute;
-    top: 170px;
+    top: 180px;
 }
 
 .pokemonOverlayMain {
@@ -208,8 +212,14 @@ dialog::backdrop {
 }
 
 .pokemonOverlayMain th {
-    width: 70px;
+    width: 80px;
     text-align: left;
+    vertical-align: top;
+    color: rgba(240, 248, 255, 0.7);
+}
+
+.pokemonOverlayMain td {
+    max-width: 235px;
 }
 
 .pokemonOverlayNav {
@@ -231,12 +241,15 @@ dialog::backdrop {
 }
 
 .pokemonOverlayMainContent {
+    height: 150px;
     padding: 0px 12px 0px 12px;
 }
 
 .pokemonOverlayFooter {
     padding: 20px;
     background-color: var(--secondaryBgColor);
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
     display: flex;
     justify-content: space-between;
 }
@@ -269,4 +282,8 @@ dialog::backdrop {
 
 .arrowBtnLeft {
     rotate: 180deg;
+}
+
+.dNone {
+    display: none;
 }
