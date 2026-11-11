@@ -114,16 +114,8 @@ function renderFirstLastDialog(pokemonObj) {
     let prevBtnContentRef = document.getElementById('prevPokemonBtn');
     let nextBtnContentRef = document.getElementById('nextPokemonBtn');
 
-    if (pokemonObj.id == 1) {
-        prevBtnContentRef.classList.add('dNone');
-        nextBtnContentRef.classList.remove('dNone');
-    } else if (pokemonObj.id == pokemonData[pokemonData.length - 1].id) {
-        prevBtnContentRef.classList.remove('dNone');
-        nextBtnContentRef.classList.add('dNone');
-    } else {
-        prevBtnContentRef.classList.remove('dNone');
-        nextBtnContentRef.classList.remove('dNone');
-    }
+    prevBtnContentRef.classList.toggle('dNone', pokemonObj.id === 1);
+    nextBtnContentRef.classList.toggle('dNone', pokemonObj.id === pokemonData.at(-1).id);
 }
 
 function closeDialog() {
