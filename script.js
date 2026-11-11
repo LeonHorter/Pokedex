@@ -1,5 +1,11 @@
 const dialogRef = document.getElementById('pokemonOverlay');
 const baseUrl = 'https://pokeapi.co/api/v2/';
+const lightPokemonTypes = [
+    "electric",
+    "ice",
+    "fairy"
+];
+
 
 let pokemonLinks = [];
 let pokemonData = [];
@@ -77,7 +83,6 @@ function showPrevPokemon(pokemonId) {
 
 function hideLoadMoreBtn() {
     let contentRef = document.getElementById('loadMoreBtn');
-
     contentRef.classList.toggle('dNone', currentPokemonData.length === pokemonData.length);
 }
 
@@ -108,6 +113,7 @@ function renderDialog(pokemonObj) {
     dialogRef.innerHTML = getPokemonOverlayTemplate(pokemonObj);
     renderPokemonTypes('pokemonOverlayTypes_', pokemonObj);
     renderFirstLastDialog(pokemonObj);
+    setCloseBtnFilter(pokemonObj.types);
 }
 
 function renderFirstLastDialog(pokemonObj) {
@@ -116,6 +122,11 @@ function renderFirstLastDialog(pokemonObj) {
 
     prevBtnContentRef.classList.toggle('dNone', pokemonObj.id === 1);
     nextBtnContentRef.classList.toggle('dNone', pokemonObj.id === pokemonData.at(-1).id);
+}
+
+function setCloseBtnFilter(pokemonTypesObj) {
+    let contentRef = document.getElementById('closeBtn');
+    contentRef.classList.toggle('blackFilter', lightPokemonTypes.includes(pokemonTypesObj[0].type.name))
 }
 
 function closeDialog() {

@@ -298,3 +298,7 @@ dialog::backdrop {
 .dNone {
     display: none;
 }
+
+.blackFilter {
+    filter: brightness(0) saturate(100%);
+}

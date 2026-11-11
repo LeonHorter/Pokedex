@@ -25,7 +25,7 @@ function getPokemonOverlayTemplate(pokemonObj) {
                 <header class="pokemonOverlayHeader">
                     <div class="pokemonOverlayHeaderTop">
                         <div class="pokemonOverlayClose">
-                            <input type="image" aria-label="close overlay" class="iconBtn" src="./assets/icons/close.svg" alt="close Overlay" tabindex="0" onclick="closeDialog()">
+                            <input type="image" id="closeBtn" aria-label="close overlay" class="iconBtn" src="./assets/icons/close.svg" alt="close Overlay" tabindex="0" onclick="closeDialog()">
                         </div>
                         <div class="pokemonOverlayTitle">
                             <h2>${capitalizeFirstLetter(pokemonObj.name)}</h2>
