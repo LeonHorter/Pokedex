@@ -37,6 +37,8 @@ function renderCards() {
         contentRef.innerHTML += getCardTemplate(currentPokemonData[index]);
         renderPokemonTypes('pokemonCardTypes_', currentPokemonData[index]);
     }
+
+    hideLoadMoreBtn();
 }
 
 function renderPokemonTypes(contentElement, pokemonObj) {
@@ -71,6 +73,12 @@ function showNextPokemon(pokemonId) {
 function showPrevPokemon(pokemonId) {
     let indexPrevPokemon = pokemonData.findIndex(pokemon => pokemon.id == pokemonId) - 1;
     renderDialog(pokemonData[indexPrevPokemon]);
+}
+
+function hideLoadMoreBtn() {
+    let contentRef = document.getElementById('loadMoreBtn');
+
+    contentRef.classList.toggle('dNone', currentPokemonData.length === pokemonData.length);
 }
 
 function capitalizeFirstLetter(string) {
