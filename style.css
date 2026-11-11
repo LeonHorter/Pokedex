@@ -110,6 +110,9 @@ dialog::backdrop {
     height: 200px;
     padding: 20px;
     border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .pokemonCardContent {
@@ -161,16 +164,23 @@ dialog::backdrop {
     padding: 20px 20px 0px 20px;
 }
 
+.pokemonOverlayHeaderTop {
+    height: 179px;
+}
+
 .pokemonOverlayClose {
     display: flex;
     justify-content: flex-end;
-    padding-bottom: 10px;
+    padding-bottom: 16px;
 }
 
 .pokemonOverlayTitle {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+}
+
+.pokemonOverlayTitle > h2 {
+    max-width: 270px;
 }
 
 .pokemonOverlayTypes {
@@ -182,13 +192,14 @@ dialog::backdrop {
 }
 
 .pokemonOverlayImgBox {
-    height: 170px;
+    height: 180px;
     background-image: url(./assets/icons/logo_bg.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right; 
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .pokemonImgLarge {
@@ -196,7 +207,7 @@ dialog::backdrop {
     height: 200px;
     object-fit: cover;
     position: absolute;
-    top: 180px;
+    top: 0px;
 }
 
 .pokemonOverlayMain {

@@ -1,31 +1,42 @@
 const dialogRef = document.getElementById('pokemonOverlay');
 const baseUrl = 'https://pokeapi.co/api/v2/';
 
+let pokemonLinks = [];
 let pokemonData = [];
-let pokemonCount = '';  // kann weg
-// neues Array [pokemonLinks] mit allen Pokemon-Links
+let currentPokemonData = [];
 
-async function getPokemonCount() {
-    let response = loadData('pokemon');
-    pokemonCount = response.count;
-}
+async function loadPokemonData() {
+    let response = await loadData(baseUrl + 'pokemon?limit=100000&offset=0');
+    pokemonLinks = response.results;
 
-async function loadCards(count) {
-    let startIndex = pokemonData.length + 1;    // startIndex = .length
-
-    for (let pokemonId = startIndex; pokemonId < startIndex + count; pokemonId++) { // Schleife über pokemonLinks[index] von index = startIndex bis < startIndex + count
-        pokemonData.push(await loadData('pokemon/' + pokemonId));   // loadData(pokemonLinks[index].url)
-        renderCards(pokemonData[pokemonId - 1]);    // renderCards(pokemonData[pokemonData[index])
+    for (let index = 0; index < pokemonLinks.length; index++) {
+        pokemonData.push(await loadData(pokemonLinks[index].url));
     }
 
-    console.log(pokemonData);
+    console.log(pokemonData);   // kann weg
+
+    loadCards(40);
 }
 
-function renderCards(pokemonObj) {
-    let contentRef = document.getElementById('pokemonList');
+function loadCards(count) {
+    let startIndex = currentPokemonData.length;
+    let endIndex = startIndex + count;
 
-    contentRef.innerHTML += getCardTemplate(pokemonObj);
-    renderPokemonTypes('pokemonCardTypes_', pokemonObj);
+    for (let index = startIndex; index < Math.min(endIndex, pokemonData.length); index++) {
+        currentPokemonData[index] = pokemonData[index];
+    }
+
+    renderCards();
+}
+
+function renderCards() {
+    let contentRef = document.getElementById('pokemonList');
+    contentRef.innerHTML = '';
+
+    for (let index = 0; index < currentPokemonData.length; index++) {
+        contentRef.innerHTML += getCardTemplate(currentPokemonData[index]);
+        renderPokemonTypes('pokemonCardTypes_', currentPokemonData[index]);
+    }
 }
 
 function renderPokemonTypes(contentElement, pokemonObj) {
@@ -47,23 +58,27 @@ function renderPokemonAbilities(pokemonAbilitiesObj) {
     return abilities.join(', ');
 }
 
-async function loadData(path = '') {
-    let response = await fetch(baseUrl + path);
+async function loadData(path) {
+    let response = await fetch(path);
     return responseToJson = await response.json();
 }
 
-function showNextPokemon(pokemonId) {   // pokemonObj übergeben
-    let indexNextPokemon = pokemonId;   // pokemonObj.name suchen in pokemonData; nächstes pokemonObj auslesen
-    renderDialog(pokemonData[indexNextPokemon]);    // nächstes pokemonObj übergeben renderDialog(nextPokemonObj)
+function showNextPokemon(pokemonId) {
+    let indexNextPokemon = pokemonData.findIndex(pokemon => pokemon.id == pokemonId) + 1;
+    renderDialog(pokemonData[indexNextPokemon]);
 }
 
-function showPrevPokemon(pokemonId) {   // pokemonObj übergeben
-    let indexPrevPokemon = pokemonId - 2;   // pokemonObj.name suchen in pokemonData; vorheriges pokemonObj auslesen
-    renderDialog(pokemonData[indexPrevPokemon]);    // vorheriges pokemonObj übergeben renderDialog(prevPokemonObj)
+function showPrevPokemon(pokemonId) {
+    let indexPrevPokemon = pokemonData.findIndex(pokemon => pokemon.id == pokemonId) - 1;
+    renderDialog(pokemonData[indexPrevPokemon]);
 }
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function truncateText(text, maxLength) {
+    return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
 }
 
 function decimeterToCentimeter(dm) {
@@ -75,7 +90,7 @@ function hectogramToKilogram(hg) {
 }
 
 function openDialog(pokemonCard) {
-    let pokemonObj = pokemonData[pokemonCard.id - 1];
+    let pokemonObj = pokemonData.find(pokemon => pokemon.id == pokemonCard.id);
 
     renderDialog(pokemonObj);
     dialogRef.showModal();
@@ -91,19 +106,15 @@ function renderFirstLastDialog(pokemonObj) {
     let prevBtnContentRef = document.getElementById('prevPokemonBtn');
     let nextBtnContentRef = document.getElementById('nextPokemonBtn');
 
-    switch (pokemonObj.id) {
-        case 1:
-            prevBtnContentRef.classList.add('dNone');
-            nextBtnContentRef.classList.remove('dNone');
-            break;
-        case pokemonCount:
-            prevBtnContentRef.classList.remove('dNone');
-            nextBtnContentRef.classList.add('dNone');
-            break;
-        default:
-            prevBtnContentRef.classList.remove('dNone');
-            nextBtnContentRef.classList.remove('dNone');
-            break;
+    if (pokemonObj.id == 1) {
+        prevBtnContentRef.classList.add('dNone');
+        nextBtnContentRef.classList.remove('dNone');
+    } else if (pokemonObj.id == pokemonData[pokemonData.length - 1].id) {
+        prevBtnContentRef.classList.remove('dNone');
+        nextBtnContentRef.classList.add('dNone');
+    } else {
+        prevBtnContentRef.classList.remove('dNone');
+        nextBtnContentRef.classList.remove('dNone');
     }
 }
 

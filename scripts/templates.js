@@ -2,8 +2,8 @@ function getCardTemplate(pokemonObj) {
     return `<li>
                 <button id="${pokemonObj.id}" class="pokemonCard bg_${pokemonObj.types[0].type.name}" data-id="card" onclick="openDialog(this)">
                     <header class="pokemonCardContent">
-                        <h3>${capitalizeFirstLetter(pokemonObj.name)}</h3>
-                        <p>#${String(pokemonObj.id).padStart(4, '0')}</p>
+                        <h3>${truncateText(capitalizeFirstLetter(pokemonObj.name), 15)}</h3>
+                        <p>#${pokemonObj.id}</p>
                     </header>
                     <div class="pokemonCardContent">
                         <ul id="pokemonCardTypes_${pokemonObj.id}" class="pokemonCardTypes">
@@ -23,15 +23,17 @@ function getTypesTemplate(pokemonTypeObj) {
 function getPokemonOverlayTemplate(pokemonObj) {
     return `<div class="pokemonOverlayContent bg_${pokemonObj.types[0].type.name}" onclick="stopPropagation(event)">
                 <header class="pokemonOverlayHeader">
-                    <div class="pokemonOverlayClose">
-                        <input type="image" aria-label="close overlay" class="iconBtn" src="./assets/icons/close.svg" alt="close Overlay" tabindex="0" onclick="closeDialog()">
+                    <div class="pokemonOverlayHeaderTop">
+                        <div class="pokemonOverlayClose">
+                            <input type="image" aria-label="close overlay" class="iconBtn" src="./assets/icons/close.svg" alt="close Overlay" tabindex="0" onclick="closeDialog()">
+                        </div>
+                        <div class="pokemonOverlayTitle">
+                            <h2>${capitalizeFirstLetter(pokemonObj.name)}</h2>
+                            <p>#${pokemonObj.id}</p>
+                        </div>
+                        <ul id="pokemonOverlayTypes_${pokemonObj.id}" class="pokemonOverlayTypes">
+                        </ul>
                     </div>
-                    <div class="pokemonOverlayTitle">
-                        <h2>${capitalizeFirstLetter(pokemonObj.name)}</h2>
-                        <p>#${String(pokemonObj.id).padStart(4, '0')}</p>
-                    </div>
-                    <ul id="pokemonOverlayTypes_${pokemonObj.id}" class="pokemonOverlayTypes">
-                    </ul>
                     <div class="pokemonOverlayImgBox">
                         <img src="${pokemonObj.sprites.other['official-artwork'].front_default}" class="pokemonImgLarge" alt="Pokémon-Bild">
                     </div>
