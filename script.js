@@ -6,7 +6,6 @@ const lightPokemonTypes = [
     "fairy"
 ];
 
-
 let pokemonLinks = [];
 let pokemonData = [];
 let currentPokemonData = [];
@@ -15,20 +14,15 @@ async function loadPokemonData() {
     let response = await loadData(baseUrl + 'pokemon?limit=100000&offset=0');
     pokemonLinks = response.results;
 
-    for (let index = 0; index < pokemonLinks.length; index++) {
-        pokemonData.push(await loadData(pokemonLinks[index].url));
-    }
-
-    console.log(pokemonData);   // kann weg
-
     loadCards(40);
 }
 
-function loadCards(count) {
+async function loadCards(count) {
     let startIndex = currentPokemonData.length;
     let endIndex = startIndex + count;
 
-    for (let index = startIndex; index < Math.min(endIndex, pokemonData.length); index++) {
+    for (let index = startIndex; index < endIndex; index++) {
+        pokemonData.push(await loadData(pokemonLinks[index].url));
         currentPokemonData[index] = pokemonData[index];
     }
 
@@ -72,13 +66,13 @@ async function loadData(path) {
 }
 
 function showNextPokemon(pokemonId) {
-    let indexNextPokemon = pokemonData.findIndex(pokemon => pokemon.id == pokemonId) + 1;
-    renderDialog(pokemonData[indexNextPokemon]);
+    let indexNextPokemon = currentPokemonData.findIndex(pokemon => pokemon.id == pokemonId) + 1;
+    renderDialog(currentPokemonData[indexNextPokemon]);
 }
 
 function showPrevPokemon(pokemonId) {
-    let indexPrevPokemon = pokemonData.findIndex(pokemon => pokemon.id == pokemonId) - 1;
-    renderDialog(pokemonData[indexPrevPokemon]);
+    let indexPrevPokemon = currentPokemonData.findIndex(pokemon => pokemon.id == pokemonId) - 1;
+    renderDialog(currentPokemonData[indexPrevPokemon]);
 }
 
 function hideLoadMoreBtn() {
@@ -133,8 +127,8 @@ function renderFirstLastDialog(pokemonObj) {
     let prevBtnContentRef = document.getElementById('prevPokemonBtn');
     let nextBtnContentRef = document.getElementById('nextPokemonBtn');
 
-    prevBtnContentRef.classList.toggle('dNone', pokemonObj.id === 1);
-    nextBtnContentRef.classList.toggle('dNone', pokemonObj.id === pokemonData.at(-1).id);
+    prevBtnContentRef.classList.toggle('dNone', pokemonObj.id === currentPokemonData[0].id);
+    nextBtnContentRef.classList.toggle('dNone', pokemonObj.id === currentPokemonData.at(-1).id);
 }
 
 function setCloseBtnFilter(pokemonTypesObj) {
