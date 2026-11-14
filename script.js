@@ -38,7 +38,7 @@ function renderCards() {
         renderPokemonTypes('pokemonCardTypes_', currentPokemonData[index]);
     }
 
-    hideLoadMoreBtn();
+    // toggleLoadMoreBtn();
 }
 
 function renderPokemonTypes(contentElement, pokemonObj) {
@@ -75,10 +75,10 @@ function showPrevPokemon(pokemonId) {
     renderDialog(currentPokemonData[indexPrevPokemon]);
 }
 
-function hideLoadMoreBtn() {
-    let contentRef = document.getElementById('loadMoreBtn');
-    contentRef.classList.toggle('dNone', currentPokemonData.length === pokemonData.length);
-}
+// function toggleLoadMoreBtn() {
+//     let contentRef = document.getElementById('loadMoreBtn');
+//     contentRef.classList.toggle('dNone');
+// }
 
 function showOverlayMainContent(navBtn) {
     //remove 'Btn'-ending from navBtn-string

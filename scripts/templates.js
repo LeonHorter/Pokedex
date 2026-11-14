@@ -9,7 +9,7 @@ function getCardTemplate(pokemonObj) {
                         <ul id="pokemonCardTypes_${pokemonObj.id}" class="pokemonCardTypes">
                         </ul>
                         <div class="pokemonCardImgBox">
-                            <img src="${pokemonObj.sprites.other['official-artwork'].front_default}" class="pokemonImgSmall" alt="Pokémon-Bild" loading="lazy">
+                            <img src="${pokemonObj.sprites.other['official-artwork'].front_default}" data-id="card-image" class="pokemonImgSmall" alt="Pokémon-Bild" loading="lazy">
                         </div>
                     </div>
                 </button>
@@ -25,23 +25,23 @@ function getPokemonOverlayTemplate(pokemonObj) {
                 <header class="pokemonOverlayHeader">
                     <div class="pokemonOverlayHeaderTop">
                         <div class="pokemonOverlayClose">
-                            <input type="image" id="closeBtn" aria-label="close overlay" class="iconBtn" src="./assets/icons/close.svg" alt="close Overlay" tabindex="0" onclick="closeDialog()">
+                            <input type="image" id="closeBtn" data-id="close-dialog-button" aria-label="close overlay" class="iconBtn" src="./assets/icons/close.svg" alt="close Overlay" tabindex="0" onclick="closeDialog()">
                         </div>
                         <div class="pokemonOverlayTitle">
-                            <h2>${capitalizeFirstLetter(pokemonObj.name)}</h2>
+                            <h2 data-id="overlay-pokemon-name">${capitalizeFirstLetter(pokemonObj.name)}</h2>
                             <p>#${pokemonObj.id}</p>
                         </div>
                         <ul id="pokemonOverlayTypes_${pokemonObj.id}" class="pokemonOverlayTypes">
                         </ul>
                     </div>
                     <div class="pokemonOverlayImgBox">
-                        <img src="${pokemonObj.sprites.other['official-artwork'].front_default}" class="pokemonImgLarge" alt="Pokémon-Bild">
+                        <img src="${pokemonObj.sprites.other['official-artwork'].front_default}" data-id="dialog-image" class="pokemonImgLarge" alt="Pokémon-Bild">
                     </div>
                 </header>
                 <main class="pokemonOverlayMain">
                     <nav>
                         <ul class="pokemonOverlayNav">
-                            <li><button id="aboutBtn" class="pokemonOverlayNavBtn navActive" onclick="showOverlayMainContent(this)">About</button><li>
+                            <li><button id="aboutBtn" class="pokemonOverlayNavBtn navActive" onclick="showOverlayMainContent(this)">About</button></li>
                             <li><button id="statsBtn" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent(this)">Base Stats</button></li>
                             <li><button id="evoBtn" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent(this)">Evolution</button></li>
                             <li><button id="movesBtn" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent(this)">Moves</button></li>
@@ -81,10 +81,10 @@ function getPokemonOverlayTemplate(pokemonObj) {
                 </main>
                 <footer class="pokemonOverlayFooter">
                     <div>
-                        <input type="image" id="prevPokemonBtn" aria-label="previous Pokémon" class="iconBtn arrowBtnLeft" src="./assets/icons/arrow-right.svg" alt="previous Pokémon" tabindex="0" onclick="showPrevPokemon(${pokemonObj.id})">
+                        <input type="image" id="prevPokemonBtn" data-id="prev-button" aria-label="previous Pokémon" class="iconBtn arrowBtnLeft" src="./assets/icons/arrow-right.svg" alt="previous Pokémon" tabindex="0" onclick="showPrevPokemon(${pokemonObj.id})">
                     </div>
                     <div>
-                        <input type="image" id="nextPokemonBtn" aria-label="next Pokémon" class="iconBtn" src="./assets/icons/arrow-right.svg" alt="next Pokémon" tabindex="0" onclick="showNextPokemon(${pokemonObj.id})">
+                        <input type="image" id="nextPokemonBtn" data-id="next-button" aria-label="next Pokémon" class="iconBtn" src="./assets/icons/arrow-right.svg" alt="next Pokémon" tabindex="0" onclick="showNextPokemon(${pokemonObj.id})">
                     </div>
                 </footer>
             </div>`;
