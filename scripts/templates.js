@@ -41,31 +41,42 @@ function getPokemonOverlayTemplate(pokemonObj) {
                 <main class="pokemonOverlayMain">
                     <nav>
                         <ul class="pokemonOverlayNav">
-                            <li><button>About</button><li>
-                            <li><button>Base Stats</button></li>
-                            <li><button>Evolution</button></li>
-                            <li><button>Moves</button></li>
+                            <li><button id="aboutBtn" class="pokemonOverlayNavBtn navActive" onclick="showOverlayMainContent(this)">About</button><li>
+                            <li><button id="statsBtn" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent(this)">Base Stats</button></li>
+                            <li><button id="evoBtn" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent(this)">Evolution</button></li>
+                            <li><button id="movesBtn" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent(this)">Moves</button></li>
                         </ul>
                     </nav>
                     <div class="pokemonOverlayMainContent">
-                        <table>
-                            <tr>
-                                <th>Species</th>
-                                <td>${capitalizeFirstLetter(pokemonObj.species.name)}</td>
-                            </tr>
-                            <tr>
-                                <th>Height</th>
-                                <td>${decimeterToCentimeter(pokemonObj.height)}</td>
-                            </tr>
-                            <tr>
-                                <th>Weight</th>
-                                <td>${hectogramToKilogram(pokemonObj.weight)}</td>
-                            </tr>
-                            <tr>
-                                <th>Abilities</th>
-                                <td>${renderPokemonAbilities(pokemonObj.abilities)}</td>
-                            </tr>
-                        </table>
+                        <section id="about" class="pokemonOverlaySection">
+                            <table>
+                                <tr>
+                                    <th>Species</th>
+                                    <td>${capitalizeFirstLetter(pokemonObj.species.name)}</td>
+                                </tr>
+                                <tr>
+                                    <th>Height</th>
+                                    <td>${decimeterToCentimeter(pokemonObj.height)}</td>
+                                </tr>
+                                <tr>
+                                    <th>Weight</th>
+                                    <td>${hectogramToKilogram(pokemonObj.weight)}</td>
+                                </tr>
+                                <tr>
+                                    <th>Abilities</th>
+                                    <td>${renderPokemonAbilities(pokemonObj.abilities)}</td>
+                                </tr>
+                            </table>
+                        </section>
+                        <section id="stats" class="pokemonOverlaySection dNone">
+                            Base Stats
+                        </section>
+                        <section id="evo" class="pokemonOverlaySection dNone">
+                            Evolution
+                        </section>
+                        <section id="moves" class="pokemonOverlaySection dNone">
+                            Moves
+                        </section>
                     </div>
                 </main>
                 <footer class="pokemonOverlayFooter">

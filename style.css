@@ -302,3 +302,8 @@ dialog::backdrop {
 .blackFilter {
     filter: brightness(0) saturate(100%);
 }
+
+.navActive {
+    background-color: rgba(255, 255, 255);
+    color: var(--secondaryBgColor);
+}

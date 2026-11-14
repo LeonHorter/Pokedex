@@ -86,6 +86,19 @@ function hideLoadMoreBtn() {
     contentRef.classList.toggle('dNone', currentPokemonData.length === pokemonData.length);
 }
 
+function showOverlayMainContent(navBtn) {
+    //remove 'Btn'-ending from navBtn-string
+    let navId = navBtn.id.slice(0, -3);
+
+    document.querySelectorAll('.pokemonOverlaySection').forEach(element => {
+        element.classList.toggle('dNone', element.id !== navId);
+    });
+
+    document.querySelectorAll('.pokemonOverlayNavBtn').forEach(element => {
+        element.classList.toggle('navActive', element.id == navBtn.id);
+    });
+}
+
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
