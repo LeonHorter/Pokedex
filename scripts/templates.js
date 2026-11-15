@@ -41,10 +41,10 @@ function getPokemonOverlayTemplate(pokemonObj) {
                 <main class="pokemonOverlayMain">
                     <nav>
                         <ul class="pokemonOverlayNav">
-                            <li><button id="aboutBtn" class="pokemonOverlayNavBtn navActive" onclick="showOverlayMainContent(this)">About</button></li>
-                            <li><button id="statsBtn" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent(this)">Base Stats</button></li>
-                            <li><button id="evoBtn" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent(this)">Evolution</button></li>
-                            <li><button id="movesBtn" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent(this)">Moves</button></li>
+                            <li><button id="about" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent('about')">About</button></li>
+                            <li><button id="stats" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent('stats')">Base Stats</button></li>
+                            <li><button id="evo" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent('evo')">Evolution</button></li>
+                            <li><button id="moves" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent('moves')">Moves</button></li>
                         </ul>
                     </nav>
                     <div class="pokemonOverlayMainContent">
@@ -68,14 +68,14 @@ function getPokemonOverlayTemplate(pokemonObj) {
                                 </tr>
                             </table>
                         </section>
-                        <section id="stats" class="pokemonOverlaySection dNone">
+                        <section id="stats" class="pokemonOverlaySection">
                             <table id="statsTable" class="statsTable">
                             </table>
                         </section>
-                        <section id="evo" class="pokemonOverlaySection dNone">
+                        <section id="evo" class="pokemonOverlaySection">
                             Evolution
                         </section>
-                        <section id="moves" class="pokemonOverlaySection dNone">
+                        <section id="moves" class="pokemonOverlaySection">
                             Moves
                         </section>
                     </div>
@@ -94,11 +94,11 @@ function getPokemonOverlayTemplate(pokemonObj) {
 function getStatsTemplate(statNamesObj, value) {
     return `<tr>
                 <th>${statNamesObj.statName}</th>
-                <td>
-                    <label for="${statNamesObj.stat + 'Progress'}">${value + ' %'}</label>
+                <td class="progressCell">
+                    <label for="${statNamesObj.stat + 'Progress'}">${value}</label>
                 </td>
                 <td>
-                    <progress id="${statNamesObj.stat + 'Progress'}" value="${value}" max="100"></progress>
+                    <progress id="${statNamesObj.stat + 'Progress'}" value="${value}" max="180"></progress>
                 </td>
             </tr>`;
 }

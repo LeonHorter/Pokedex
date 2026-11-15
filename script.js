@@ -35,6 +35,7 @@ const statNames = [
 let pokemonLinks = [];
 let pokemonData = [];
 let currentPokemonData = [];
+let currentNavId = 'about';
 
 async function loadPokemonData() {
     let response = await loadData(baseUrl + 'pokemon?limit=100000&offset=0');
@@ -119,17 +120,16 @@ function showPrevPokemon(pokemonId) {
 //     contentRef.classList.toggle('dNone');
 // }
 
-function showOverlayMainContent(navBtn) {
-    //remove 'Btn'-ending from navBtn-string
-    let navId = navBtn.id.slice(0, -3);
-
+function showOverlayMainContent(navId) {
     document.querySelectorAll('.pokemonOverlaySection').forEach(element => {
         element.classList.toggle('dNone', element.id !== navId);
     });
 
     document.querySelectorAll('.pokemonOverlayNavBtn').forEach(element => {
-        element.classList.toggle('navActive', element.id == navBtn.id);
+        element.classList.toggle('navActive', element.id == navId);
     });
+
+    currentNavId = navId;
 }
 
 function capitalizeFirstLetter(string) {
@@ -159,6 +159,7 @@ function renderDialog(pokemonObj) {
     dialogRef.innerHTML = getPokemonOverlayTemplate(pokemonObj);
     renderPokemonTypes('pokemonOverlayTypes_', pokemonObj);
     renderPokemonStats(pokemonObj.stats);
+    showOverlayMainContent(currentNavId);
     renderFirstLastDialog(pokemonObj);
     setCloseBtnFilter(pokemonObj.types);
 }

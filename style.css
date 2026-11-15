@@ -260,7 +260,13 @@ dialog::backdrop {
 }
 
 .statsTable th {
-    width: 130px;
+    width: 120px;
+}
+
+.progressCell {
+    width: 28px;
+    text-align: right;
+    padding-right: 4px;
 }
 
 .pokemonOverlayFooter {
