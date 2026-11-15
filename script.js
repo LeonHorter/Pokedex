@@ -1,9 +1,35 @@
 const dialogRef = document.getElementById('pokemonOverlay');
 const baseUrl = 'https://pokeapi.co/api/v2/';
 const lightPokemonTypes = [
-    "electric",
-    "ice",
-    "fairy"
+    'electric',
+    'ice',
+    'fairy'
+];
+const statNames = [
+    {
+        'statName' : 'HP',
+        'stat' : 'hp'
+    },
+    {
+        'statName' : 'Attack',
+        'stat' : 'attack'
+    },
+    {
+        'statName' : 'Defense',
+        'stat' : 'defense'
+    },
+    {
+        'statName' : 'Special Attack',
+        'stat' : 'special-attack'
+    },
+    {
+        'statName' : 'Special Defense',
+        'stat' : 'special-defense'
+    },
+    {
+        'statName' : 'Speed',
+        'stat' : 'speed'
+    }
 ];
 
 let pokemonLinks = [];
@@ -25,6 +51,8 @@ async function loadCards(count) {
         pokemonData.push(await loadData(pokemonLinks[index].url));
         currentPokemonData[index] = pokemonData[index];
     }
+
+    console.log(pokemonData);   // kann weg
 
     renderCards();
 }
@@ -58,6 +86,17 @@ function renderPokemonAbilities(pokemonAbilitiesObj) {
     }
 
     return abilities.join(', ');
+}
+
+function renderPokemonStats(pokemonStatsObj) {
+    let contentRef = document.getElementById('statsTable');
+
+    for (let index = 0; index < statNames.length; index++) {
+        let statObj = pokemonStatsObj.find(statEl => statEl.stat.name == statNames[index].stat);
+        let baseStat = statObj.base_stat;
+        
+        contentRef.innerHTML += getStatsTemplate(statNames[index], baseStat);
+    }
 }
 
 async function loadData(path) {
@@ -110,7 +149,7 @@ function hectogramToKilogram(hg) {
 }
 
 function openDialog(pokemonCard) {
-    let pokemonObj = pokemonData.find(pokemon => pokemon.id == pokemonCard.id);
+    let pokemonObj = currentPokemonData.find(pokemon => pokemon.id == pokemonCard.id);
 
     renderDialog(pokemonObj);
     dialogRef.showModal();
@@ -119,6 +158,7 @@ function openDialog(pokemonCard) {
 function renderDialog(pokemonObj) {
     dialogRef.innerHTML = getPokemonOverlayTemplate(pokemonObj);
     renderPokemonTypes('pokemonOverlayTypes_', pokemonObj);
+    renderPokemonStats(pokemonObj.stats);
     renderFirstLastDialog(pokemonObj);
     setCloseBtnFilter(pokemonObj.types);
 }

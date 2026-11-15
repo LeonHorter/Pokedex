@@ -49,7 +49,7 @@ function getPokemonOverlayTemplate(pokemonObj) {
                     </nav>
                     <div class="pokemonOverlayMainContent">
                         <section id="about" class="pokemonOverlaySection">
-                            <table>
+                            <table class="aboutTable">
                                 <tr>
                                     <th>Species</th>
                                     <td>${capitalizeFirstLetter(pokemonObj.species.name)}</td>
@@ -69,7 +69,8 @@ function getPokemonOverlayTemplate(pokemonObj) {
                             </table>
                         </section>
                         <section id="stats" class="pokemonOverlaySection dNone">
-                            Base Stats
+                            <table id="statsTable" class="statsTable">
+                            </table>
                         </section>
                         <section id="evo" class="pokemonOverlaySection dNone">
                             Evolution
@@ -88,4 +89,16 @@ function getPokemonOverlayTemplate(pokemonObj) {
                     </div>
                 </footer>
             </div>`;
+}
+
+function getStatsTemplate(statNamesObj, value) {
+    return `<tr>
+                <th>${statNamesObj.statName}</th>
+                <td>
+                    <label for="${statNamesObj.stat + 'Progress'}">${value + ' %'}</label>
+                </td>
+                <td>
+                    <progress id="${statNamesObj.stat + 'Progress'}" value="${value}" max="100"></progress>
+                </td>
+            </tr>`;
 }

@@ -222,15 +222,10 @@ dialog::backdrop {
     font-size: 14px;
 }
 
-.pokemonOverlayMain th {
-    width: 80px;
+.pokemonOverlaySection th {
     text-align: left;
     vertical-align: top;
     color: rgba(240, 248, 255, 0.7);
-}
-
-.pokemonOverlayMain td {
-    max-width: 225px;
 }
 
 .pokemonOverlayNav {
@@ -254,6 +249,18 @@ dialog::backdrop {
 .pokemonOverlayMainContent {
     height: 150px;
     padding: 0px 12px 0px 12px;
+}
+
+.aboutTable th {
+    width: 80px;
+}
+
+.aboutTable td {
+    max-width: 225px;
+}
+
+.statsTable th {
+    width: 130px;
 }
 
 .pokemonOverlayFooter {
