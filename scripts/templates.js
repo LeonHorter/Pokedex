@@ -94,3 +94,10 @@ function getStatsTemplate(statNamesObj, value) {
                 </td>
             </tr>`;
 }
+
+function getLoadingScreenTemplate() {
+    return `<li class="loadingBox">
+                <img src="./assets/icons/logo_bg.svg" class="loadingScreenImg" alt="Pokedex-Logo">
+                <p>Loading ...</p>
+            </li>`;
+}

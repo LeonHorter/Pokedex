@@ -45,6 +45,9 @@ async function loadPokemonData() {
 }
 
 async function loadCards(count) {
+    toggleLoadMoreBtn();
+    setLoadingScreen();
+
     let startIndex = currentPokemonData.length;
     let endIndex = startIndex + count;
 
@@ -58,6 +61,11 @@ async function loadCards(count) {
     renderCards();
 }
 
+function setLoadingScreen() {
+    let contentRef = document.getElementById('pokemonList');
+    contentRef.innerHTML = getLoadingScreenTemplate();
+}
+
 function renderCards() {
     let contentRef = document.getElementById('pokemonList');
     contentRef.innerHTML = '';
@@ -67,7 +75,7 @@ function renderCards() {
         renderPokemonTypes('pokemonCardTypes_', currentPokemonData[index]);
     }
 
-    // toggleLoadMoreBtn();
+    toggleLoadMoreBtn();
 }
 
 function renderPokemonTypes(contentElement, pokemonObj) {
@@ -115,10 +123,10 @@ function showPrevPokemon(pokemonId) {
     renderDialog(currentPokemonData[indexPrevPokemon]);
 }
 
-// function toggleLoadMoreBtn() {
-//     let contentRef = document.getElementById('loadMoreBtn');
-//     contentRef.classList.toggle('dNone');
-// }
+function toggleLoadMoreBtn() {
+    let contentRef = document.getElementById('loadMoreBtn');
+    contentRef.classList.toggle('dNone');
+}
 
 function showOverlayMainContent(navId) {
     document.querySelectorAll('.pokemonOverlaySection').forEach(element => {

@@ -326,3 +326,21 @@ dialog::backdrop {
     background-color: rgba(255, 255, 255);
     color: var(--secondaryBgColor);
 }
+
+.loadingScreenImg {
+    width: 100px;
+    animation: fullRotation 2s linear infinite;
+}
+
+.loadingBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+@keyframes fullRotation {
+    to {
+        rotate: 360deg;
+    }
+}
