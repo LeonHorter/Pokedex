@@ -45,23 +45,23 @@ async function loadPokemonData() {
 }
 
 async function loadCards(count) {
-    toggleLoadMoreBtn();
-    setLoadingScreen();
+    showLoadingScreen();
 
     let startIndex = currentPokemonData.length;
     let endIndex = startIndex + count;
 
     for (let index = startIndex; index < endIndex; index++) {
         pokemonData.push(await loadData(pokemonLinks[index].url));
-        currentPokemonData[index] = pokemonData[index];
     }
 
-    console.log(pokemonData);   // kann weg
-
+    currentPokemonData = pokemonData;
     renderCards();
+    showLoadMoreBtn();
 }
 
-function setLoadingScreen() {
+function showLoadingScreen() {
+    hideLoadMoreBtn();
+
     let contentRef = document.getElementById('pokemonList');
     contentRef.innerHTML = getLoadingScreenTemplate();
 }
@@ -74,8 +74,6 @@ function renderCards() {
         contentRef.innerHTML += getCardTemplate(currentPokemonData[index]);
         renderPokemonTypes('pokemonCardTypes_', currentPokemonData[index]);
     }
-
-    toggleLoadMoreBtn();
 }
 
 function renderPokemonTypes(contentElement, pokemonObj) {
@@ -84,6 +82,36 @@ function renderPokemonTypes(contentElement, pokemonObj) {
     for (let index = 0; index < pokemonObj.types.length; index++) {
         contentRef.innerHTML += getTypesTemplate(pokemonObj.types[index].type);
     }
+}
+
+function searchPokemon(term) {
+    hideLoadMoreBtn();
+
+    currentPokemonData = pokemonData.filter(pokemon => pokemon.name.includes(term.toLowerCase()));
+    
+    if (currentPokemonData.length === 0) {
+        let contentRef = document.getElementById('pokemonList');
+        contentRef.innerHTML = getNoMatchFoundTemplate();
+    } else {
+        renderCards();
+    }
+}
+
+searchField.addEventListener('input', function(event) {
+    const searchTerm = event.target.value.trim();
+
+    if (searchTerm.length >= 3) {
+        searchPokemon(searchTerm);
+    } else if (searchTerm.length === 0) {
+        loadCardsAfterSearch();
+    }
+});
+
+function loadCardsAfterSearch() {
+    currentPokemonData = pokemonData;
+
+    renderCards();
+    showLoadMoreBtn();
 }
 
 function renderPokemonAbilities(pokemonAbilitiesObj) {
@@ -123,9 +151,14 @@ function showPrevPokemon(pokemonId) {
     renderDialog(currentPokemonData[indexPrevPokemon]);
 }
 
-function toggleLoadMoreBtn() {
+function hideLoadMoreBtn() {
     let contentRef = document.getElementById('loadMoreBtn');
-    contentRef.classList.toggle('dNone');
+    contentRef.classList.add('dNone');
+}
+
+function showLoadMoreBtn() {
+    let contentRef = document.getElementById('loadMoreBtn');
+    contentRef.classList.remove('dNone');
 }
 
 function showOverlayMainContent(navId) {

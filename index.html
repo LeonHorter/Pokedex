@@ -19,13 +19,13 @@
             <img src="./assets/icons/logo.svg" class="logoImg" alt="Pokedex-Logo">
             <h1>Pokédex</h1>
         </a>
-        <input type="text" id="searchInput" placeholder="Search" data-id="search-input">
+        <input type="text" id="searchField" placeholder="Search" data-id="search-input">
     </header>
 
     <main class="mainContent contentWrapper" data-id="content">
         <ul id="pokemonList">
         </ul>
-        <button id="loadMoreBtn" class="basicBtn" onclick="loadCards(30)" data-id="load-more-button">Load more</button>
+        <button id="loadMoreBtn" class="basicBtn" onclick="loadCards(30)" data-id="load-more-button">+ Load more</button>
     </main>
 
     <dialog id="pokemonOverlay" data-id="dialog" onclick="closeDialog()">

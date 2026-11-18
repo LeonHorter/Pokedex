@@ -96,8 +96,14 @@ function getStatsTemplate(statNamesObj, value) {
 }
 
 function getLoadingScreenTemplate() {
-    return `<li class="loadingBox">
+    return `<li class="loadingBox marginTop">
                 <img src="./assets/icons/logo_bg.svg" class="loadingScreenImg" alt="Pokedex-Logo">
                 <p>Loading ...</p>
+            </li>`;
+}
+
+function getNoMatchFoundTemplate() {
+    return `<li class="marginTop">
+                <p data-id="not-found">No match found :(</p>
             </li>`;
 }
