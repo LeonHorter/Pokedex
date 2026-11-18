@@ -67,6 +67,7 @@ dialog::backdrop {
 }
 
 #pokemonOverlay {
+    width: 393px;
     padding: 0;
     border: none;
     border-radius: 24px;
@@ -220,6 +221,11 @@ dialog::backdrop {
 .pokemonOverlayMain * {
     color: var(--mainFontColor);
     font-size: 14px;
+}
+
+.pokemonOverlayMain > nav {
+    display: flex;
+    justify-content: center;
 }
 
 .pokemonOverlaySection th {

@@ -43,8 +43,6 @@ function getPokemonOverlayTemplate(pokemonObj) {
                         <ul class="pokemonOverlayNav">
                             <li><button id="about" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent('about')">About</button></li>
                             <li><button id="stats" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent('stats')">Base Stats</button></li>
-                            <li><button id="evo" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent('evo')">Evolution</button></li>
-                            <li><button id="moves" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent('moves')">Moves</button></li>
                         </ul>
                     </nav>
                     <div class="pokemonOverlayMainContent">
@@ -71,12 +69,6 @@ function getPokemonOverlayTemplate(pokemonObj) {
                         <section id="stats" class="pokemonOverlaySection">
                             <table id="statsTable" class="statsTable">
                             </table>
-                        </section>
-                        <section id="evo" class="pokemonOverlaySection">
-                            Evolution
-                        </section>
-                        <section id="moves" class="pokemonOverlaySection">
-                            Moves
                         </section>
                     </div>
                 </main>
