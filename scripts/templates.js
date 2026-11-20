@@ -1,8 +1,8 @@
 function getCardTemplate(pokemonObj) {
     return `<li>
-                <button id="${pokemonObj.id}" class="pokemonCard bg_${pokemonObj.types[0].type.name}" data-id="card" onclick="openDialog(this)">
+                <button id="${pokemonObj.id}" class="pokemonCard bg_${pokemonObj.types[0].type.name}" data-id="card" aria-labelledby="button-title" tabindex="0" onclick="openDialog(this)">
                     <header class="pokemonCardContent">
-                        <h3>${truncateText(capitalizeFirstLetter(pokemonObj.name), 15)}</h3>
+                        <h3 id="button-title">${truncateText(capitalizeFirstLetter(pokemonObj.name), 15)}</h3>
                         <p>#${pokemonObj.id}</p>
                     </header>
                     <div class="pokemonCardContent">
@@ -28,7 +28,7 @@ function getPokemonOverlayTemplate(pokemonObj) {
                             <input type="image" id="closeBtn" data-id="close-dialog-button" aria-label="close overlay" class="iconBtn" src="./assets/icons/close.svg" alt="close Overlay" tabindex="0" onclick="closeDialog()">
                         </div>
                         <div class="pokemonOverlayTitle">
-                            <h2 data-id="overlay-pokemon-name">${capitalizeFirstLetter(pokemonObj.name)}</h2>
+                            <h2 id="dialog-title" data-id="overlay-pokemon-name">${capitalizeFirstLetter(pokemonObj.name)}</h2>
                             <p>#${pokemonObj.id}</p>
                         </div>
                         <ul id="pokemonOverlayTypes_${pokemonObj.id}" class="pokemonOverlayTypes">
@@ -40,9 +40,9 @@ function getPokemonOverlayTemplate(pokemonObj) {
                 </header>
                 <main class="pokemonOverlayMain">
                     <nav>
-                        <ul class="pokemonOverlayNav">
-                            <li><button id="about" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent('about')">About</button></li>
-                            <li><button id="stats" class="pokemonOverlayNavBtn" onclick="showOverlayMainContent('stats')">Base Stats</button></li>
+                        <ul class="pokemonOverlayNav" role="navigation">
+                            <li><button id="about" class="pokemonOverlayNavBtn" tabindex="0" aria-label="show Pokémon general information" onclick="showOverlayMainContent('about')">About</button></li>
+                            <li><button id="stats" class="pokemonOverlayNavBtn" tabindex="0" aria-label="show Pokémon Base Stats" onclick="showOverlayMainContent('stats')">Base Stats</button></li>
                         </ul>
                     </nav>
                     <div class="pokemonOverlayMainContent">
@@ -74,10 +74,10 @@ function getPokemonOverlayTemplate(pokemonObj) {
                 </main>
                 <footer class="pokemonOverlayFooter">
                     <div>
-                        <input type="image" id="prevPokemonBtn" data-id="prev-button" aria-label="previous Pokémon" class="iconBtn arrowBtnLeft" src="./assets/icons/arrow-right.svg" alt="previous Pokémon" tabindex="0" onclick="showPrevPokemon(${pokemonObj.id})">
+                        <input type="image" id="prevPokemonBtn" data-id="prev-button" aria-label="show previous Pokémon" class="iconBtn arrowBtnLeft" src="./assets/icons/arrow-right.svg" alt="previous Pokémon" tabindex="0" onclick="showPrevPokemon(${pokemonObj.id})">
                     </div>
                     <div>
-                        <input type="image" id="nextPokemonBtn" data-id="next-button" aria-label="next Pokémon" class="iconBtn" src="./assets/icons/arrow-right.svg" alt="next Pokémon" tabindex="0" onclick="showNextPokemon(${pokemonObj.id})">
+                        <input type="image" id="nextPokemonBtn" data-id="next-button" aria-label="show next Pokémon" class="iconBtn" src="./assets/icons/arrow-right.svg" alt="next Pokémon" tabindex="0" onclick="showNextPokemon(${pokemonObj.id})">
                     </div>
                 </footer>
             </div>`;
