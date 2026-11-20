@@ -21,20 +21,20 @@ This is a **practice project created as part of the Developer Akademie** program
 Follow these steps to run the project locally on your machine:
 
 **01** Clone the repository
-    ```bash
-    git clone https://github.com/LeonHorter/Pokedex.git
-    ```
+```bash
+git clone https://github.com/LeonHorter/Pokedex.git
+```
 
 
 **02** Navigate into the project directory
-    ```bash
-    cd Pokedex
-    ```
+```bash
+cd Pokedex
+```
 
 
 **03** Open the project
-    * Since this project uses pure HTML, CSS, and JavaScript, you don't need to install any dependencies.
-    * Simply open the `index.html` file in your browser, or use an extension like **Live Server** in VS Code for the best experience.
+* Since this project uses pure HTML, CSS, and JavaScript, you don't need to install any dependencies.
+* Simply open the `index.html` file in your browser, or use an extension like **Live Server** in VS Code for the best experience.
 
 ---
 
