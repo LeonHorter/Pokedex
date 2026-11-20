@@ -41,14 +41,14 @@ async function loadPokemonData() {
     let response = await loadData(baseUrl + 'pokemon?limit=100000&offset=0');
     pokemonLinks = response.results;
 
-    loadCards(40);
+    loadCards();
 }
 
-async function loadCards(count) {
+async function loadCards() {
     showLoadingScreen();
 
     let startIndex = currentPokemonData.length;
-    let endIndex = startIndex + count;
+    let endIndex = startIndex + 30;
 
     for (let index = startIndex; index < endIndex; index++) {
         pokemonData.push(await loadData(pokemonLinks[index].url));
@@ -179,14 +179,6 @@ function capitalizeFirstLetter(string) {
 
 function truncateText(text, maxLength) {
     return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
-}
-
-function decimeterToCentimeter(dm) {
-    return dm * 10 + ' cm';
-}
-
-function hectogramToKilogram(hg) {
-    return hg / 10 + ' kg';
 }
 
 function openDialog(pokemonCard) {

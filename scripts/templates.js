@@ -54,11 +54,11 @@ function getPokemonOverlayTemplate(pokemonObj) {
                                 </tr>
                                 <tr>
                                     <th>Height</th>
-                                    <td>${decimeterToCentimeter(pokemonObj.height)}</td>
+                                    <td>${pokemonObj.height * 10 + ' cm'}</td>
                                 </tr>
                                 <tr>
                                     <th>Weight</th>
-                                    <td>${hectogramToKilogram(pokemonObj.weight)}</td>
+                                    <td>${pokemonObj.weight / 10 + ' kg'}</td>
                                 </tr>
                                 <tr>
                                     <th>Abilities</th>
